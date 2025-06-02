@@ -145,9 +145,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
-    // close window & dwm
+    // close window, restart & quit dwm
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+    { MODKEY|ShiftMask,             XK_r,      quit,           {1} }, // restart
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} }, // quit
 };
 
 /* button definitions */

@@ -112,6 +112,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 
     // vanitygaps
 	{ MODKEY|Mod1Mask,              XK_h,      incrgaps,       {.i = +1 } },

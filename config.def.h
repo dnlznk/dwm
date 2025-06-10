@@ -90,10 +90,10 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgco
 static const char *roficmd[] = {"rofi", "-show", "drun", NULL };
 static const char *termcmd[] = { "st", NULL };
 
-static const char audiomutecmd[] = "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 dwmblocks";
-static const char audiodecreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+2 dwmblocks";
-static const char audioincreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+2 dwmblocks";
-static const char inputmutecmd[] = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+static const char audiomutecmd[] = "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+3 dwmblocks";
+static const char audiodecreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+3 dwmblocks";
+static const char audioincreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+3 dwmblocks";
+static const char inputmutecmd[] = "pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+4 dwmblocks";
 
 
 static const Key keys[] = {

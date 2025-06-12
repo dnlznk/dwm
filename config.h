@@ -98,9 +98,10 @@ static const char inputmutecmd[] = "pactl set-source-mute @DEFAULT_SOURCE@ toggl
 static const char keyboarduscmd[] = "setxkbmap us && pkill -RTMIN+5 dwmblocks";
 static const char keyboarddecmd[] = "setxkbmap de && pkill -RTMIN+5 dwmblocks";
 
-static const char screenshotselectioncmd[] = "maim -s -u | xclip -selection clipboard -t image/png -i";
-static const char screenshotwindowcmd[] = "maim -i $(xdotool getactivewindow) -u | xclip -selection clipboard -t image/png -i";
-static const char screenshotscreencmd[] = "maim -u | xclip -selection clipboard -t image/png -i";
+static const char screenshotselectioncmd[] = "maim -s -u -o | xclip -selection clipboard -t image/png -i";
+static const char screenshotselectionfilecmd[] = "maim -s -u -o $HOME/Pictures/Screenshots/$(date ;+%Y-%m-%d_%H:%M:%S')";
+static const char screenshotwindowcmd[] = "maim -i $(xdotool getactivewindow) -u -o | xclip -selection clipboard -t image/png -i";
+static const char screenshotscreencmd[] = "maim -u -o | xclip -selection clipboard -t image/png -i";
 
 
 static const Key keys[] = {
@@ -123,6 +124,7 @@ static const Key keys[] = {
 
     // screenshot
     { MODKEY,                       XK_s,                       spawn,          SHCMD(screenshotselectioncmd)},
+    { MODKEY|Mod1Mask,              XK_s,                       spawn,          SHCMD(screenshotselectionfilecmd)},
     { MODKEY|ShiftMask,             XK_s,                       spawn,          SHCMD(screenshotwindowcmd)},
     { MODKEY|ControlMask,           XK_s,                       spawn,          SHCMD(screenshotscreencmd)},
 

@@ -95,6 +95,9 @@ static const char audiodecreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ -2%
 static const char audioincreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+3 dwmblocks";
 static const char inputmutecmd[] = "pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+4 dwmblocks";
 
+static const char keyboarduscmd[] = "setxkbmap us && pkill -RTMIN+5 dwmblocks";
+static const char keyboarddecmd[] = "setxkbmap de && pkill -RTMIN+5 dwmblocks";
+
 
 static const Key keys[] = {
 	/* modifier                     key                         function        argument */
@@ -109,6 +112,10 @@ static const Key keys[] = {
     { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD(audiodecreasecmd)},
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD(audioincreasecmd)},
     { 0,                            XF86XK_AudioMicMute,        spawn,          SHCMD(inputmutecmd)},
+
+    // keyboard
+    { MODKEY|ControlMask,           XK_u,                       spawn,          SHCMD(keyboarduscmd)},
+    { MODKEY|ControlMask,           XK_d,                       spawn,          SHCMD(keyboarddecmd)},
 
     // navigation & appearance
 	{ MODKEY,                       XK_j,                       focusstack,     {.i = +1 } },

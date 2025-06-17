@@ -101,7 +101,7 @@ static const char keyboarduscmd[] = "setxkbmap us && pkill -RTMIN+5 dwmblocks";
 static const char keyboarddecmd[] = "setxkbmap de && pkill -RTMIN+5 dwmblocks";
 
 static const char screenshotselectioncmd[] = "maim -s -u -o | xclip -selection clipboard -t image/png -i";
-static const char screenshotselectionfilecmd[] = "maim -s -u -o $HOME/Pictures/Screenshots/$(date ;+%Y-%m-%d_%H:%M:%S')";
+static const char screenshotselectionfilecmd[] = "maim -s -u -o $HOME/Pictures/Screenshots/$(date '+%Y-%m-%d_%H:%M:%S').png";
 static const char screenshotwindowcmd[] = "maim -i $(xdotool getactivewindow) -u -o | xclip -selection clipboard -t image/png -i";
 static const char screenshotscreencmd[] = "maim -u -o | xclip -selection clipboard -t image/png -i";
 

@@ -89,8 +89,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-fn", "dmenufont", "-nb", "normbgcolor", "-nf", "normfgcolor", "-sb", "selbordercolor", "-sf", "selfgcolor", NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[] = { "st", NULL };
-static const char *rofiwifimenucmd[] = { "rofi-wifi-menu", NULL };
-static const char *rofipasswordmenucmd[] = { "rofi-password-menu", NULL };
+
+static const char rofiwifimenucmd[] = "rofi-wifi-menu";
+static const char rofipasswordmenucmd[] = "rofi-password-menu";
 
 static const char audiomutecmd[] = "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+3 dwmblocks";
 static const char audiodecreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+3 dwmblocks";
@@ -113,8 +114,10 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_p,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_p,                       spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd } },
-    { MODKEY|ShiftMask,             XK_w,                       spawn,          {.v = rofiwifimenucmd } },
-    { MODKEY|ShiftMask,             XK_p,                       spawn,          {.v = rofipasswordmenucmd } },
+
+    // rofi scripts
+    { MODKEY|ShiftMask,             XK_w,                       spawn,          SHCMD(rofiwifimenucmd)},
+    { MODKEY|ShiftMask,             XK_p,                       spawn,          SHCMD(rofipasswordmenucmd)},
 
     // audio
     { 0,                            XF86XK_AudioMute,           spawn,          SHCMD(audiomutecmd)},

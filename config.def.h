@@ -116,8 +116,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd } },
 
     // rofi scripts
-    { MODKEY|ShiftMask,             XK_w,                       spawn,          SHCMD(rofiwifimenucmd),
-    { MODKEY|ShiftMask,             XK_p,                       spawn,          SHCMD(rofipasswordmenucmd),
+    { MODKEY|ShiftMask,             XK_w,                       spawn,          SHCMD(rofiwifimenucmd)},
+    { MODKEY|ShiftMask,             XK_p,                       spawn,          SHCMD(rofipasswordmenucmd)},
 
     // audio
     { 0,                            XF86XK_AudioMute,           spawn,          SHCMD(audiomutecmd)},

@@ -90,16 +90,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", "dmenufont", "-nb", "normb
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[] = { "st", NULL };
 
-static const char rofiwifimenucmd[] = "rofi-wifi-menu";
-static const char rofipasswordmenucmd[] = "rofi-password-menu";
+static const char *rofiwifimenucmd[] = { "rofi-wifi-menu", NULL };
+static const char *rofipasswordmenucmd[] = { "rofi-password-menu", NULL };
 
-static const char audiomutecmd[] = "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+3 dwmblocks";
-static const char audiodecreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -RTMIN+3 dwmblocks";
-static const char audioincreasecmd[] = "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -RTMIN+3 dwmblocks";
-static const char inputmutecmd[] = "pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+4 dwmblocks";
+static const char *audiomutecmd[] = { "audio-volume-toggle", NULL };
+static const char *audiodecreasecmd[] = { "audio-volume", "-2", NULL };
+static const char *audioincreasecmd[] = { "audio-volume", "+2", NULL };
+static const char *inputmutecmd[] = { "mic-toggle", NULL };
 
-static const char keyboarduscmd[] = "setxkbmap us && pkill -RTMIN+5 dwmblocks";
-static const char keyboarddecmd[] = "setxkbmap de && pkill -RTMIN+5 dwmblocks";
+static const char *keyboarduscmd[] = { "keyboard-set", "us", NULL };
+static const char *keyboarddecmd[] = { "keyboard-set", "de", NULL };
 
 static const char screenshotselectioncmd[] = "maim -s -u -o | xclip -selection clipboard -t image/png -i";
 static const char screenshotselectionfilecmd[] = "maim -s -u -o $HOME/Pictures/Screenshots/$(date '+%Y-%m-%d_%H:%M:%S').png";
@@ -116,24 +116,24 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd } },
 
     // rofi scripts
-    { MODKEY|ShiftMask,             XK_w,                       spawn,          SHCMD(rofiwifimenucmd)},
-    { MODKEY|ShiftMask,             XK_p,                       spawn,          SHCMD(rofipasswordmenucmd)},
+    { MODKEY|ShiftMask,             XK_w,                       spawn,          {.v = rofiwifimenucmd } },
+    { MODKEY|ShiftMask,             XK_p,                       spawn,          {.v = rofipasswordmenucmd } },
 
     // audio
-    { 0,                            XF86XK_AudioMute,           spawn,          SHCMD(audiomutecmd)},
-    { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD(audiodecreasecmd)},
-    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD(audioincreasecmd)},
-    { 0,                            XF86XK_AudioMicMute,        spawn,          SHCMD(inputmutecmd)},
+    { 0,                            XF86XK_AudioMute,           spawn,          {.v = audiomutecmd} },
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = audiodecreasecmd} },
+    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = audioincreasecmd } },
+    { 0,                            XF86XK_AudioMicMute,        spawn,          {.v = inputmutecmd } },
 
     // keyboard
-    { MODKEY|ControlMask,           XK_u,                       spawn,          SHCMD(keyboarduscmd)},
-    { MODKEY|ControlMask,           XK_d,                       spawn,          SHCMD(keyboarddecmd)},
+    { MODKEY|ControlMask,           XK_u,                       spawn,          {.v = keyboarduscmd } },
+    { MODKEY|ControlMask,           XK_d,                       spawn,          {.v = keyboarddecmd } },
 
     // screenshot
-    { MODKEY,                       XK_s,                       spawn,          SHCMD(screenshotselectioncmd)},
-    { MODKEY|Mod1Mask,              XK_s,                       spawn,          SHCMD(screenshotselectionfilecmd)},
-    { MODKEY|ShiftMask,             XK_s,                       spawn,          SHCMD(screenshotwindowcmd)},
-    { MODKEY|ControlMask,           XK_s,                       spawn,          SHCMD(screenshotscreencmd)},
+    { MODKEY,                       XK_s,                       spawn,          SHCMD(screenshotselectioncmd) },
+    { MODKEY|Mod1Mask,              XK_s,                       spawn,          SHCMD(screenshotselectionfilecmd) },
+    { MODKEY|ShiftMask,             XK_s,                       spawn,          SHCMD(screenshotwindowcmd) },
+    { MODKEY|ControlMask,           XK_s,                       spawn,          SHCMD(screenshotscreencmd) },
 
     // navigation & appearance
 	{ MODKEY,                       XK_j,                       focusstack,     {.i = +1 } },

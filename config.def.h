@@ -93,10 +93,10 @@ static const char *termcmd[] = { "st", NULL };
 static const char *rofiwifimenucmd[] = { "rofi-wifi-menu", NULL };
 static const char *rofipasswordmenucmd[] = { "rofi-password-menu", NULL };
 
-static const char *audiomutecmd[] = { "audio-volume-toggle", NULL };
+static const char *audiomutecmd[] = { "audio-toggle-mute", NULL };
 static const char *audiodecreasecmd[] = { "audio-volume", "-2", NULL };
 static const char *audioincreasecmd[] = { "audio-volume", "+2", NULL };
-static const char *inputmutecmd[] = { "mic-toggle", NULL };
+static const char *inputmutecmd[] = { "mic-toggle-mute", NULL };
 
 static const char *keyboarduscmd[] = { "keyboard-set", "us", NULL };
 static const char *keyboarddecmd[] = { "keyboard-set", "de", NULL };
@@ -116,8 +116,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd } },
 
     // rofi scripts
-    { MODKEY|ShiftMask,             XK_w,                       spawn,          {.v = rofiwifimenucmd } },
-    { MODKEY|ShiftMask,             XK_p,                       spawn,          {.v = rofipasswordmenucmd } },
+    { MODKEY|ControlMask,           XK_w,                       spawn,          {.v = rofiwifimenucmd } },
+    { MODKEY|ControlMask,           XK_p,                       spawn,          {.v = rofipasswordmenucmd } },
 
     // audio
     { 0,                            XF86XK_AudioMute,           spawn,          {.v = audiomutecmd} },

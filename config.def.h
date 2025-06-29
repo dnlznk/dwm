@@ -98,6 +98,9 @@ static const char *audiodecreasecmd[] = { "audio-volume", "-2", NULL };
 static const char *audioincreasecmd[] = { "audio-volume", "+2", NULL };
 static const char *inputmutecmd[] = { "mic-toggle-mute", NULL };
 
+static const char *backlightdecreasecmd[] = { "backlight", "-10", NULL };
+static const char *backlightincreasecmd[] = { "backlight", "+10", NULL };
+
 static const char *keyboarduscmd[] = { "keyboard-set", "us", NULL };
 static const char *keyboarddecmd[] = { "keyboard-set", "de", NULL };
 
@@ -120,10 +123,14 @@ static const Key keys[] = {
     { MODKEY|ControlMask,           XK_p,                       spawn,          {.v = rofipasswordmenucmd } },
 
     // audio
-    { 0,                            XF86XK_AudioMute,           spawn,          {.v = audiomutecmd} },
-    { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = audiodecreasecmd} },
+    { 0,                            XF86XK_AudioMute,           spawn,          {.v = audiomutecmd } },
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = audiodecreasecmd } },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = audioincreasecmd } },
     { 0,                            XF86XK_AudioMicMute,        spawn,          {.v = inputmutecmd } },
+
+    // backlight
+    { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = backlightdecreasecmd } },
+    { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = backlightincreasecmd } },
 
     // keyboard
     { MODKEY|ControlMask,           XK_u,                       spawn,          {.v = keyboarduscmd } },
